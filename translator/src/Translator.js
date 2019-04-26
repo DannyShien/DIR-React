@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Output from './Output';
+import CustomInput from './CustomInput';
 
 class Translator extends Component {
     constructor(props) {
@@ -17,16 +18,23 @@ class Translator extends Component {
 
         return (
             <div>
-                <input 
+                <ul>{
+                    names.map ((name, i) => (
+                    <li key={i}>{name}</li>))
+                }
+                </ul>
+                {/* <input 
                     onChange={this.updateInput}
+                /> */}
+
+                <CustomInput 
+                    handleInput={this.updateInput}
                 />
+
 
                 <Output 
                     text={this.state.input}
                 />       
-                <ul>
-                    {names.map (name => <li>(name)</li>)}
-                </ul>
 
             </div>
         )
