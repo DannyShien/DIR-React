@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Button (props) {
+function Button ({toggle, handleStart}) {
+    // console.log(props)
     return(
         <button
-            onClick={props.handleStart}
-        >Start</button>
+            onClick={handleStart}
+        >{toggle ? `Stop` : `Start`}</button>
     );
-
 
 }
 

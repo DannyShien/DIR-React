@@ -6,25 +6,43 @@ class Stopwatch extends Component {
     constructor(props) {
         super(props); 
         this.state = {
-            timer: 0, 
+            timer:  0,
             isCounting: false
         }
     }
 
     render() {
         return (
-            <div>
-                <h1>00:00:00</h1>
+            <>
+                <h1>{this.state.timer}</h1>
                 <Button 
-                    handleStart={this.start}
+                    handleStart={this.startTimer}
+                    toggle={this.startTime}  
                 />
 
-            </div>
+            </>
         )
     }
 
-    start = () => {
+    startTimer = () => {
+        this.setState({
+            isCounting: true
+        })
+        if(!this.state.isCounting) {
+            console.log('Counting')
+            this.count = setInterval(() => {
+                this.setState({
+                    timer: this.state.timer + 1
+                })
+            }, 1000)
+        };
+    }
 
+    stopTimer = () => {
+        this.setState({
+            isCounting: false
+        });
+        clearInterval(this.count)
     }
 
 }
