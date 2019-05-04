@@ -17,9 +17,9 @@ class Stopwatch extends Component {
                 <h1>{this.state.timer}</h1>
                 <Button 
                     handleStart={this.startTimer}
-                    toggle={this.startTime}  
+                    toggle={this.state.isCounting}  
+                    handleStop={this.stopTimer}
                 />
-
             </>
         )
     }
@@ -30,19 +30,32 @@ class Stopwatch extends Component {
         })
         if(!this.state.isCounting) {
             console.log('Counting')
+            console.log(this.state.isCounting)
             this.count = setInterval(() => {
                 this.setState({
                     timer: this.state.timer + 1
                 })
             }, 1000)
-        };
+        } else {
+            this.setState({
+                // timer: this.state.timer,
+                isCounting: false
+            })
+        }
     }
 
     stopTimer = () => {
         this.setState({
             isCounting: false
-        });
-        clearInterval(this.count)
+        })
+        if(this.state.isCounting) {
+            console.log('Reset')
+            console.log(this.state.isCounting)
+            this.setState({
+                timer: 0
+            })    
+            clearInterval(this.count)
+        };
     }
 
 }
