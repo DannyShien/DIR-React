@@ -1,0 +1,9 @@
+.app {
+    display: flex; 
+}
+.list{
+    width: 20%;
+}
+.detail {
+    width: 80%;
+}
